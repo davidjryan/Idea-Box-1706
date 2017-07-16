@@ -5,30 +5,33 @@
     <title>Idea Box</title>
     <link rel="stylesheet-normalize" href=".git/normalize.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
     <header>
       <section class="header-container">
-        <h1 class="idea-h1"><h1 class="box-h1"></h1></h1>
-        <input class="input-title" type="text" class="input-title">
-        <textarea class="input-body" name="" id="" cols="30" rows="1"></textarea>
-        <button class="save-button"></button>
+        <div class="h1-container">
+          <h1 class="idea-h1">idea<h1 class="box-h1">box</h1></h1>
+        </div>
+        <input class="input-title" type="text" class="input-title" placeholder=" Title">
+        <textarea class="input-body" name="" id="" cols="30" rows="5" placeholder=" Body"></textarea>
+        <button class="save-button">save</button>
       </section>
     </header>
     <main>
-      <input class="input-search" type="text">
+      <input class="input-search" type="text" placeholder=" search" cols="30" rows="1">
       <section class="main-container">
         <article>
-          <input type="text" class="card-title">
+          <input type="text" class="card-title" placeholder="Example Idea 1">
           <button class="card-delete-button"></button>
-          <textarea class="card-body" name="" id="" cols="30" rows="2"></textarea>
+          <textarea class="card-body" name="" id="" cols="30" rows="3">tiramisu carrot cake fruitcake gingerbread tiramisu carrot cake fruitcake gingerbread</textarea>
           <section class="card-quality-container">
             <button class="card-quality-up"></button>
             <button class="card-quality-down"></button>
-            <p class="card-quality-text"></p>
+            <p class="card-quality-text">quality: swill</p>
           </section>
+          <hr />
         </article>
       </section>
     </main>
