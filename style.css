@@ -70,7 +70,7 @@ header {
 
 main {
   width: 85%;
-  padding: 5% 7.5% 0 7.5%;
+  padding: 3% 7.5% 0 7.5%;
   margin: auto;
 }
 
@@ -167,6 +167,7 @@ hr {
   main {
     width: 50%;
     height: 60vh;
+    padding-top: 20px;
   }
 
   .input-body{
