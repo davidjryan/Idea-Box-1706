@@ -9,7 +9,7 @@ $('.main-container').on('keyup', '.card-body', editCardBody);
 function IdeaCard(title, body) {
   this.title = title,
   this.body = body,
-  this.quality = "Swill",
+  this.quality = "swill",
   this.id = Date.now()
 }
 
@@ -20,7 +20,7 @@ function cardCreation(event) {
   var Idea = new IdeaCard(title, body)
 
   cardHTML(Idea)
-  //send object to localstorage
+  setStorage(Idea);
   clearInputs();
 }
 
@@ -63,11 +63,27 @@ function deleteCard() {
 
 function downVote() {
   var ideaID = $(this).closest('article').prop('id');
-  
+  var IdeaCard = getStorage(ideaID);
+  if (IdeaCard.quality === "genius"){
+    IdeaCard.quality = "plausible";
+  } else if (IdeaCard.quality === "plausible"){
+    IdeaCard.quality = "swill";
+  }
+  setStorage(IdeaCard);
 }
 
 function upVote() {
   var ideaID = $(this).closest('article').prop('id');
+  var IdeaCard = getStorage(ideaID);
+  if (IdeaCard.quality === "swill"){
+    IdeaCard.quality = "plausible";
+    // this.nextSibling.innerHTML = "plausible";
+    console.log(this.nextSibling.nextSibling);
+  } else if (IdeaCard.quality === "plausible"){
+    IdeaCard.quality = "genius";
+    $(this).val() = "genius";
+  }
+  setStorage(IdeaCard);
 }
 
 function editCardTitle() {
@@ -80,17 +96,17 @@ function editCardTitle() {
 function editCardBody() {
   var ideaID = $(this).closest('article').prop('id');
   var bodyEdit = getStorage(ideaID);
-  titleEdit.body = $(this).val();
+  bodyEdit.body = $(this).val();
   setStorage(bodyEdit);
 }
 
 function setStorage(idea) {
   var id = idea.id;
-  localstorage.setItem(id, JSON.stringify(idea));
+  localStorage.setItem(id, JSON.stringify(idea));
 }
 
 function getStorage(id) {
-  var ideaGot = JSON.parse(localstorage.getItem(id));
+  var ideaGot = JSON.parse(localStorage.getItem(id));
   return ideaGot;
 
 }
