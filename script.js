@@ -43,6 +43,14 @@ function clearInputs() {
 
 function filterInput() {
   var searchInput = $(this).val();
+  // if input is same as title or body below show that card-body
+  // if input is different than a title or body below hide that card
+  // if input is empty, all cards should be visible
+  if (searchInput === IdeaCard.title || searchInput === IdeaCard.body){
+    IdeaCard.style.display = "block";
+  } else{
+    IdeaCard.style.display = "none";
+  }
 }
 
 function deleteCard() {
