@@ -3,6 +3,8 @@ $('.main-container').on('click', '.card-delete-button', deleteCard);
 $('.main-container').on('click', '.card-quality-up', upVote);
 $('.main-container').on('click', '.card-quality-down', downVote);
 $('.input-search').on('keyup', filterInput);
+$('.main-container').on('keyup', '.card-title', editCardTitle);
+$('.main-container').on('keyup', '.card-body', editCardBody);
 
 function IdeaCard(title, body) {
   this.title = title,
@@ -18,11 +20,12 @@ function cardCreation(event) {
   var Idea = new IdeaCard(title, body)
 
   cardHTML(Idea)
+  //send object to localstorage
   clearInputs();
 }
 
 function cardHTML(object) {
-  $('.main-container').prepend(`<article>
+  $('.main-container').prepend(`<article id="${object.id}">
     <input type="text" class="card-title" placeholder="Example Idea 1" value="${object.title}">
     <button class="card-delete-button"></button>
     <textarea class="card-body" name="" id="" cols="30" rows="3">${object.body}</textarea>
@@ -54,14 +57,41 @@ function filterInput() {
 }
 
 function deleteCard() {
+  //access localstorage with ID and remove
   $(this).closest('article').remove();
 }
 
 function downVote() {
-
+  var ideaID = $(this).closest('article').prop('id');
+  
 }
 
 function upVote() {
+  var ideaID = $(this).closest('article').prop('id');
+}
+
+function editCardTitle() {
+  var ideaID = $(this).closest('article').prop('id');
+  var titleEdit = getStorage(ideaID);
+  titleEdit.title = $(this).val();
+  setStorage(titleEdit);
+}
+
+function editCardBody() {
+  var ideaID = $(this).closest('article').prop('id');
+  var bodyEdit = getStorage(ideaID);
+  titleEdit.body = $(this).val();
+  setStorage(bodyEdit);
+}
+
+function setStorage(idea) {
+  var id = idea.id;
+  localstorage.setItem(id, JSON.stringify(idea));
+}
+
+function getStorage(id) {
+  var ideaGot = JSON.parse(localstorage.getItem(id));
+  return ideaGot;
 
 }
 
