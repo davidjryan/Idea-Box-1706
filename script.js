@@ -2,8 +2,7 @@ $('.save-button').on('click', cardCreation);
 $('.main-container').on('click', '.card-delete-button', deleteCard);
 $('.main-container').on('click', '.card-quality-up', upVote);
 $('.main-container').on('click', '.card-quality-down', downVote);
-$('.input-search').on('keyup', filterInputTitle);
-// $('.input-search').on('keyup', filterInputBody);
+$('.input-search').on('keyup', filterInput);
 $('.main-container').on('keyup', '.card-title', editCardTitle);
 $('.main-container').on('keyup', '.card-body', editCardBody);
 
@@ -62,19 +61,16 @@ function filterInputTitle() {
       $(this).closest("article").show()
     }
   })
+
+function
+  $(".card-body").each( function(index, IdeaCard){
+    if(!IdeaCard.value.includes(searchInput)) {
+      $(this).closest("article").hide()
+    } else {
+      $(this).closest("article").show()
+    }
+  })
 }
-
-// function filterInputBody(){
-//   var searchInput = $(this).val();
-//   $(".card-body").each( function(index, IdeaCard){
-//     if(!IdeaCard.value.includes(searchInput)) {
-//       $(this).closest("article").hide()
-//     } else {
-//       $(this).closest("article").show()
-//     }
-//   })
-// }
-
 
 
 
