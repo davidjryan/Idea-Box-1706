@@ -6,10 +6,18 @@ $('.input-search').on('keyup', filterInput);
 $('.main-container').on('keyup', '.card-title', editCardTitle);
 $('.main-container').on('keyup', '.card-body', editCardBody);
 
+$(document).ready(function() {
+  for (var i = 0; i < localStorage.length; i++){
+    var id = JSON.parse(localStorage.key(i));
+    cardHTML(getStorage(id));
+  }
+})
+
+
 function IdeaCard(title, body) {
   this.title = title,
   this.body = body,
-  this.quality = "Swill",
+  this.quality = "swill",
   this.id = Date.now()
 }
 
@@ -17,10 +25,10 @@ function cardCreation(event) {
   event.preventDefault();
   var title = $('.input-title').val();
   var body = $('.input-body').val();
-  var Idea = new IdeaCard(title, body)
+  var Idea = new IdeaCard(title, body);
 
   cardHTML(Idea)
-  //send object to localstorage
+  setStorage(Idea);
   clearInputs();
 }
 
@@ -31,8 +39,8 @@ function cardHTML(object) {
     <textarea class="card-body" name="" id="" cols="30" rows="3">${object.body}</textarea>
     <section class="card-quality-container">
       <button class="card-quality-up"></button>
-      <button class="card-quality-down"></button>
-      <p class="card-quality-text">quality: ${object.quality}</p>
+      <button class="card-quality-down"></button><p>Quality: </p>
+      <p class="card-quality-text">${object.quality}</p>
     </section>
     <hr />
   </article>`)
@@ -57,17 +65,36 @@ function filterInput() {
 }
 
 function deleteCard() {
-  //access localstorage with ID and remove
+  var ideaID = $(this).closest('article').prop('id');
+  localStorage.removeItem(ideaID);
   $(this).closest('article').remove();
 }
 
 function downVote() {
   var ideaID = $(this).closest('article').prop('id');
-  
+  var IdeaCard = getStorage(ideaID);
+  if (IdeaCard.quality === "genius"){
+    IdeaCard.quality = "plausible";
+    $(this).siblings('.card-quality-text').text("plausible")
+  } else if (IdeaCard.quality === "plausible"){
+    IdeaCard.quality = "swill";
+    $(this).siblings('.card-quality-text').text("swill")
+  }
+  setStorage(IdeaCard);
 }
 
 function upVote() {
   var ideaID = $(this).closest('article').prop('id');
+  var IdeaCard = getStorage(ideaID);
+  console.log(IdeaCard.quality);
+  if (IdeaCard.quality === "swill"){
+    IdeaCard.quality = "plausible";
+    $(this).siblings('.card-quality-text').text("plausible")
+  } else if (IdeaCard.quality === "plausible"){
+    IdeaCard.quality = "genius";
+    $(this).siblings('.card-quality-text').text("genius")
+  }
+  setStorage(IdeaCard);
 }
 
 function editCardTitle() {
@@ -80,19 +107,18 @@ function editCardTitle() {
 function editCardBody() {
   var ideaID = $(this).closest('article').prop('id');
   var bodyEdit = getStorage(ideaID);
-  titleEdit.body = $(this).val();
+  bodyEdit.body = $(this).val();
   setStorage(bodyEdit);
 }
 
 function setStorage(idea) {
   var id = idea.id;
-  localstorage.setItem(id, JSON.stringify(idea));
+  localStorage.setItem(id, JSON.stringify(idea));
 }
 
 function getStorage(id) {
-  var ideaGot = JSON.parse(localstorage.getItem(id));
+  var ideaGot = JSON.parse(localStorage.getItem(id));
   return ideaGot;
-
 }
 
 function localStorageInterface() {
