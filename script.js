@@ -2,7 +2,7 @@ $('.save-button').on('click', cardCreation);
 $('.main-container').on('click', '.card-delete-button', deleteCard);
 $('.main-container').on('click', '.card-quality-up', upVote);
 $('.main-container').on('click', '.card-quality-down', downVote);
-$('.input-search').on('keyup', filterInput);
+// $('.input-search').on('keyup', filterInput);
 $('.main-container').on('keyup', '.card-title', editCardTitle);
 $('.main-container').on('keyup', '.card-body', editCardBody);
 
@@ -39,7 +39,7 @@ function cardHTML(object) {
     <textarea class="card-body" name="" id="" cols="30" rows="3">${object.body}</textarea>
     <section class="card-quality-container">
       <button class="card-quality-up"></button>
-      <button class="card-quality-down"></button><p>Quality: </p>
+      <button class="card-quality-down"></button><p class="card-quality-text">Quality: </p>
       <p class="card-quality-text">${object.quality}</p>
     </section>
     <hr />
@@ -52,25 +52,25 @@ function clearInputs() {
   $('.input-body').val('');
 }
 
-function filterInputTitle() {
-  var searchInput = $(this).val();
-  $(".card-title").each( function(index, IdeaCard){
-    if(!IdeaCard.value.includes(searchInput)) {
-      $(this).closest("article").hide()
-    } else {
-      $(this).closest("article").show()
-    }
-  })
-
-function
-  $(".card-body").each( function(index, IdeaCard){
-    if(!IdeaCard.value.includes(searchInput)) {
-      $(this).closest("article").hide()
-    } else {
-      $(this).closest("article").show()
-    }
-  })
-}
+// function filterInputTitle() {
+//   var searchInput = $(this).val();
+//   $(".card-title").each( function(index, IdeaCard){
+//     if(!IdeaCard.value.includes(searchInput)) {
+//       $(this).closest("article").hide()
+//     } else {
+//       $(this).closest("article").show()
+//     }
+//   })
+//
+// function
+//   $(".card-body").each( function(index, IdeaCard){
+//     if(!IdeaCard.value.includes(searchInput)) {
+//       $(this).closest("article").hide()
+//     } else {
+//       $(this).closest("article").show()
+//     }
+//   })
+// }
 
 
 
