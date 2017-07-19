@@ -33,7 +33,7 @@ function cardCreation(event) {
 }
 
 function cardHTML(object) {
-  $('.main-container').prepend(`<article id="${object.id}">
+  $('.main-container').prepend(`<article role="form" id="${object.id}">
     <input type="text" class="card-title" placeholder="Example Idea 1" value="${object.title}">
     <button class="card-delete-button"></button>
     <textarea class="card-body" name="" id="" cols="30" rows="3">${object.body}</textarea>
@@ -86,7 +86,6 @@ function downVote() {
 function upVote() {
   var ideaID = $(this).closest('article').prop('id');
   var IdeaCard = getStorage(ideaID);
-  console.log(IdeaCard.quality);
   if (IdeaCard.quality === "swill"){
     IdeaCard.quality = "plausible";
     $(this).siblings('.card-quality-text').text("plausible")
@@ -119,8 +118,4 @@ function setStorage(idea) {
 function getStorage(id) {
   var ideaGot = JSON.parse(localStorage.getItem(id));
   return ideaGot;
-}
-
-function localStorageInterface() {
-
 }
