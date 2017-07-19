@@ -2,7 +2,7 @@ $('.save-button').on('click', cardCreation);
 $('.main-container').on('click', '.card-delete-button', deleteCard);
 $('.main-container').on('click', '.card-quality-up', upVote);
 $('.main-container').on('click', '.card-quality-down', downVote);
-$('.input-search').on('keyup', filterInput);
+// $('.input-search').on('keyup', filterInput);
 $('.main-container').on('keyup', '.card-title', editCardTitle);
 $('.main-container').on('keyup', '.card-body', editCardBody);
 
@@ -39,7 +39,7 @@ function cardHTML(object) {
     <textarea class="card-body" name="" id="" cols="30" rows="3">${object.body}</textarea>
     <section class="card-quality-container">
       <button class="card-quality-up"></button>
-      <button class="card-quality-down"></button><p>Quality: </p>
+      <button class="card-quality-down"></button><p class="card-quality-text">Quality: </p>
       <p class="card-quality-text">${object.quality}</p>
     </section>
     <hr />
@@ -52,17 +52,59 @@ function clearInputs() {
   $('.input-body').val('');
 }
 
-function filterInput() {
-  var searchInput = $(this).val();
+// function filterInputTitle() {
+//   var searchInput = $(this).val();
+//   $(".card-title").each( function(index, IdeaCard){
+//     if(!IdeaCard.value.includes(searchInput)) {
+//       $(this).closest("article").hide()
+//     } else {
+//       $(this).closest("article").show()
+//     }
+//   })
+//
+// function
+//   $(".card-body").each( function(index, IdeaCard){
+//     if(!IdeaCard.value.includes(searchInput)) {
+//       $(this).closest("article").hide()
+//     } else {
+//       $(this).closest("article").show()
+//     }
+//   })
+// }
+
+
+
+
+
+// function filterInput() {
+//   var searchInput = $(this).val();
+//   for (var i = 0; i <localStorage.length; i++){
+//       if (searchInput === IdeaCard.title || searchInput === IdeaCard.body){
+//         $(IdeaCard).show();
+//       } else{
+//         $(IdeaCard).hide();
+//       }
+//     }
+//   }
+
+
+//   function findObjectByAttribute (items, attribute, value) {
+//   for (var i = 0; i < items.length; i++) {
+//     if (items[i][attribute] === value) {
+//       return items[i];
+//     }
+//   }
+//   return null;
+// }
   // if input is same as title or body below show that card-body
   // if input is different than a title or body below hide that card
   // if input is empty, all cards should be visible
-  if (searchInput === IdeaCard.title || searchInput === IdeaCard.body){
-    IdeaCard.style.display = "block";
-  } else{
-    IdeaCard.style.display = "none";
-  }
-}
+//   if (searchInput === IdeaCard.title || searchInput === IdeaCard.body){
+//     IdeaCard.style.display = "flex";
+//   } else{
+//     IdeaCard.style.display = "none";
+//   }
+// }
 
 function deleteCard() {
   var ideaID = $(this).closest('article').prop('id');

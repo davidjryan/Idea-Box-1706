@@ -78,13 +78,17 @@ main {
   overflow: auto;
 }
 
+.search-container{
+  width: 85%;
+  margin: auto;
+  margin-top: 10px;
+}
+
 .input-search {
   font-size: 24px;
   height: 40px;
   width: 100%;
   border: 1px solid lightgray;
-  margin-bottom: 0;
-
 }
 
 .main-container {
@@ -97,36 +101,39 @@ article {
 }
 
 .card-title {
-  width: 89%;
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 700;
+  width: 90%;
   height: 30px;
   margin-bottom: 10px;
+  margin-top: 10px;
   border: none;
+
 }
 
 .card-delete-button {
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   background: none;
   background-image: url("images/delete.svg");
   border: none;
   border-radius: 100%;
-  margin-left: 6%;
+  float: right;
+  margin-top: 10px;
 }
 
 .card-body {
 color: #939598;
-font-size: 16px;
+font-size: 18px;
 width: 100%;
-height: 50px;
+height: 70px;
 border: none;
 }
 
 .card-quality-container {
   display: flex;
   width: 55%;
-  justify-content: space-between;
+  justify-content: flex-start;
 
 }
 
@@ -137,6 +144,7 @@ border: none;
   background-image: url("images/upvote.svg");
   border: none;
   border-radius: 100%;
+  margin-right: 7%;
 }
 
 .card-quality-down {
@@ -146,6 +154,7 @@ border: none;
   background-image: url("images/downvote.svg");
   border: none;
   border-radius: 100%;
+  margin-right: 7%;
 }
 
 .card-quality-text {
@@ -158,7 +167,13 @@ hr {
   border: 1px solid #D1D3D4;
 }
 
-@media (min-width: 700px) {
+@media (min-width: 500px) {
+  header{
+    height: 50vh;
+  }
+}
+
+@media (min-width: 900px) {
   .header-container {
     width: 50%;
   }
@@ -167,6 +182,17 @@ hr {
     padding: 0;
     width: 100%;
     height: 40vh;
+  }
+  .idea-h1 {
+    color: #00A79D;
+    font-size: 60px;
+    margin-bottom: 10px;
+  }
+
+  .box-h1 {
+    color: #6D6E71;
+    font-size: 60px;
+    margin-bottom: 10px;
   }
 
   main {
@@ -178,5 +204,9 @@ hr {
   .input-body{
     height: 50px;
     padding-top: 10px;
+  }
+
+  .search-container{
+    width: 50%;
   }
 }
