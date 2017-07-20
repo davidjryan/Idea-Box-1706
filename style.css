@@ -195,6 +195,13 @@ hr {
   header{
     height: 50vh;
   }
+  .idea-h1 {
+    font-size: 60px;
+  }
+
+  .box-h1 {
+    font-size: 60px;
+  }
 }
 
 @media (min-width: 900px) {
@@ -207,14 +214,12 @@ hr {
     width: 100%;
     height: 40vh;
   }
-  .idea-h1 {
-    color: #00A79D;
+  .idea-h1, .idea-h1 {
     font-size: 60px;
     margin-bottom: 10px;
   }
 
-  .box-h1 {
-    color: #6D6E71;
+  .box-h1, .idea-h1 {
     font-size: 60px;
     margin-bottom: 10px;
   }
