@@ -10,7 +10,6 @@ $('.main-container').on('keyup', '.card-body', editCardBody);
 $(document).ready(function() {
   for (var i = 0; i < localStorage.length; i++){
     var id = JSON.parse(localStorage.key(i));
-    console.log(id)
     cardHTML(getStorage(id));
     disableSave();
   }
@@ -52,16 +51,15 @@ function cardHTML(object) {
 function disableSave() {
     if($('.input-title').val() !== "" && $('.input-body').val() !== "") {
       $('.save-button').removeAttr('disabled', false);
-      console.log(true)
     } else {
       $('.save-button').attr('disabled', true);
-      console.log(false)
     }
 }
 
 function clearInputs() {
   $('.input-title').val('');
   $('.input-body').val('');
+  disableSave();
 }
 
 function filterInput() {
@@ -128,9 +126,9 @@ function editCardBody() {
   setStorage(bodyEdit);
 }
 
-function setStorage(idea) {
-  var id = idea.id;
-  localStorage.setItem(id, JSON.stringify(idea));
+function setStorage(obj) {
+  var id = obj.id;
+  localStorage.setItem(id, JSON.stringify(obj));
 }
 
 function getStorage(id) {
