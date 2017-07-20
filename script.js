@@ -40,7 +40,7 @@ function cardHTML(object) {
     <textarea class="card-body searchable" name="" id="" cols="30" rows="3" value="">${object.body}</textarea>
     <section class="card-quality-container">
       <button class="card-quality-up"></button>
-      <button class="card-quality-down"></button><p class="card-quality-text">Quality: </p>
+      <button class="card-quality-down"></button><p class="card-quality-text-2">Quality: </p>
       <p class="card-quality-text" >${object.quality}</p>
     </section>
     <hr />

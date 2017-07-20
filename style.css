@@ -68,6 +68,10 @@ header {
   margin-top: 10px;
 }
 
+.save-button:hover{
+  background-color: #045E55;
+}
+
 main {
   width: 85%;
   padding: 3% 7.5% 0 7.5%;
@@ -122,6 +126,10 @@ article {
   margin-top: 10px;
 }
 
+.card-delete-button:hover{
+  background-image: url(images/delete-hover.svg);
+}
+
 .card-body {
 color: #939598;
 font-size: 18px;
@@ -147,6 +155,10 @@ border: none;
   margin-right: 7%;
 }
 
+.card-quality-up:hover{
+  background-image: url("images/upvote-hover.svg");
+}
+
 .card-quality-down {
   width: 20px;
   height: 20px;
@@ -157,7 +169,15 @@ border: none;
   margin-right: 7%;
 }
 
+.card-quality-down:hover{
+  background-image: url("images/downvote-hover.svg");
+}
+
 .card-quality-text {
+  color: #6D6E71;
+}
+
+.card-quality-text-2 {
   color: #6D6E71;
 }
 
