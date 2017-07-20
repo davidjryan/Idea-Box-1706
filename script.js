@@ -77,7 +77,6 @@ function filterInput() {
   for(var i = 0; i < matches.length; i++) {
     cardHTML(matches[i]);
   }
-  console.log(matches)
 }
 
 function deleteCard() {
