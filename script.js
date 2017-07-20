@@ -1,5 +1,6 @@
 $('.save-button').on('click', cardCreation);
 $('.main-container').on('click', '.card-delete-button', deleteCard);
+$('.header-inputs').on('keyup', disableSave)
 $('.main-container').on('click', '.card-quality-up', upVote);
 $('.main-container').on('click', '.card-quality-down', downVote);
 $('.input-search').on('keyup', filterInput);
@@ -11,6 +12,7 @@ $(document).ready(function() {
     var id = JSON.parse(localStorage.key(i));
     console.log(id)
     cardHTML(getStorage(id));
+    disableSave();
   }
 })
 
@@ -47,6 +49,15 @@ function cardHTML(object) {
   </article>`)
 }
 
+function disableSave() {
+    if($('.input-title').val() !== "" && $('.input-body').val() !== "") {
+      $('.save-button').removeAttr('disabled', false);
+      console.log(true)
+    } else {
+      $('.save-button').attr('disabled', true);
+      console.log(false)
+    }
+}
 
 function clearInputs() {
   $('.input-title').val('');

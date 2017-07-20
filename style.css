@@ -72,6 +72,10 @@ header {
   background-color: #045E55;
 }
 
+.save-button:disabled {
+  background-color: #6D6E71;
+}
+
 main {
   width: 85%;
   padding: 3% 7.5% 0 7.5%;
