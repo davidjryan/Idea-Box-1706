@@ -2,13 +2,14 @@ $('.save-button').on('click', cardCreation);
 $('.main-container').on('click', '.card-delete-button', deleteCard);
 $('.main-container').on('click', '.card-quality-up', upVote);
 $('.main-container').on('click', '.card-quality-down', downVote);
-// $('.input-search').on('keyup', filterInput);
+$('.input-search').on('keyup', filterInput);
 $('.main-container').on('keyup', '.card-title', editCardTitle);
 $('.main-container').on('keyup', '.card-body', editCardBody);
 
 $(document).ready(function() {
   for (var i = 0; i < localStorage.length; i++){
     var id = JSON.parse(localStorage.key(i));
+    console.log(id)
     cardHTML(getStorage(id));
   }
 })
@@ -34,13 +35,13 @@ function cardCreation(event) {
 
 function cardHTML(object) {
   $('.main-container').prepend(`<article role="form" id="${object.id}">
-    <input type="text" class="card-title" placeholder="Example Idea 1" value="${object.title}">
+    <input type="text" class="card-title searchable" placeholder="Example Idea 1" value="${object.title}">
     <button class="card-delete-button"></button>
-    <textarea class="card-body" name="" id="" cols="30" rows="3">${object.body}</textarea>
+    <textarea class="card-body searchable" name="" id="" cols="30" rows="3" value="">${object.body}</textarea>
     <section class="card-quality-container">
       <button class="card-quality-up"></button>
-      <button class="card-quality-down"></button><p class="card-quality-text-2">quality:&nbsp </p>
-      <p class="card-quality-text">${object.quality}</p>
+      <button class="card-quality-down"></button><p class="card-quality-text-2">Quality: </p>
+      <p class="card-quality-text" >${object.quality}</p>
     </section>
     <hr />
   </article>`)
@@ -50,6 +51,24 @@ function cardHTML(object) {
 function clearInputs() {
   $('.input-title').val('');
   $('.input-body').val('');
+}
+
+function filterInput() {
+  var storageArray = [];
+  var searchInput = $(this).val().toLowerCase();
+  for (var i = 0; i < localStorage.length; i++){
+    var id = JSON.parse(localStorage.key(i));
+    storageArray.push(getStorage(id))
+  }
+  //filter through array and match search field
+  var matches = storageArray.filter(function(object){
+    return object.title.toLowerCase().includes(searchInput)||object.body.toLowerCase().includes(searchInput)
+  })
+  $('.main-container').empty();
+  for(var i = 0; i < matches.length; i++) {
+    cardHTML(matches[i]);
+  }
+  console.log(matches)
 }
 
 function deleteCard() {
